@@ -1,0 +1,36 @@
+{
+    "RandomForestClassifier":
+        {
+            "n_estimators": [1000, 5000],
+            "max_features": ["sqrt", "None"],
+            "min_samples_split": [5, 7],
+            "class_weight": ["balanced_subsample", "None"]
+        }
+    ,
+    "GradientBoostingClassifier":
+        {
+            "learning_rate": [1, 0.1, 0.01],
+            "n_estimators": [1000, 5000],
+            "max_depth": [1, 2, 3],
+            "subsample": [1, 0.75],
+            "max_features": ["sqrt", "None"]
+        }
+    ,
+    "AdaBoostClassifier":
+        {
+            "learning_rate": [1, 0.1],
+            "n_estimators": [1000, 5000]
+        }
+    ,
+    "BalancedBaggingClassifier":
+        {
+            "n_estimators": [1000, 5000],
+            "undersample_proportion": [0.5, 0.4, 0.3]
+        }
+    ,
+    "SVC":
+      {
+          "kernel": ["poly", "rbf", "sigmoid"],
+          "class_weight": ["balanced", "None"]
+        }
+}
