@@ -1,3 +1,11 @@
+/*
+  This view is the main data provider.
+  It joins together all database tables, each of which represents a different survey section.
+
+  This way the machine learning part of the project as a unified flat view of the survey
+  as a single table.
+*/
+
 \c lg
 
 DROP VIEW IF EXISTS features;
@@ -147,64 +155,64 @@ SELECT
  ,ma.qn739_chp
  ,ma.qn740_chp
  ,ma.qn741_chp
- -- ,pn.qn801w
- -- ,pn.qn8id
- -- ,pn.qn803w_pnc
- -- ,pn.qn804w_pnc
- -- ,pn.qn805w_pnc
- -- ,pn.qn806w_pnc
- -- ,pn.qn807w_pnc
- -- ,pn.qn808w_pnc
- -- ,pn.qn809w_pnc
- -- ,pn.qn810w_pnc
- -- ,pn.qn811w_pnc
- -- ,pn.qn812w_pnc
- -- ,pn.qn813w_pnc
- -- ,pn.qn814w_pnc
- -- ,pn.qn815w_pnc
- -- ,pn.qn816w_pnc
- -- ,pn.qn817w_pnc
- -- ,pn.qn818w_pnc
- -- ,pn.qn819w_pnc
- -- ,pn.qn820w_pnc
- -- ,pn.qn820aw_pnc
- -- ,pn.qn821w_pnc
- -- ,pn.qn822w_pnc
- -- ,pn.qn822aw_pnc
- -- ,pn.qn823w_pnc
- -- ,pn.qn824w_pnc
- -- ,pn.qn824aw_pnc
- -- ,pn.qn825w_pnc
- -- ,pn.qn826w_pnc
- -- ,pn.qn826aw_pnc
- -- ,pn.qn827w_pnc
- -- ,pn.qn828w_pnc
- -- ,pn.qn828aw_pnc
- -- ,pn.qn829w_pnc
- -- ,pn.qn830w_pnc
- -- ,pn.qn830aw_pnc
- -- ,pn.qn831w_pnc
- -- ,pn.qn832w_pnc
- -- ,pn.qn832aw_pnc
- -- ,pn.qn833w_pnc
- -- ,pn.qn834w_pnc
- -- ,pn.qn834aw_pnc
- -- ,pn.qn835w_pnc
- -- ,pn.qn836w_pnc
- -- ,pn.qn836aw_pnc
- -- ,pn.qn837w_pnc
- -- ,an.qn901w
- -- ,an.qn9id
- -- ,an.qn903w_anc
- -- ,an.qn904w_anc
- -- ,an.qn905w_anc
- -- ,an.qn906w_anc
- -- ,an.qn907w_anc
- -- ,an.qn908w_anc
- -- ,an.qn909w_anc
- -- ,an.qn910w_anc
- -- ,an.qn911w_anc
- -- ,an.qn912w_anc
+ ,pn.qn801w
+ ,pn.qn8id
+ ,pn.qn803w_pnc
+ ,pn.qn804w_pnc
+ ,pn.qn805w_pnc
+ ,pn.qn806w_pnc
+ ,pn.qn807w_pnc
+ ,pn.qn808w_pnc
+ ,pn.qn809w_pnc
+ ,pn.qn810w_pnc
+ ,pn.qn811w_pnc
+ ,pn.qn812w_pnc
+ ,pn.qn813w_pnc
+ ,pn.qn814w_pnc
+ ,pn.qn815w_pnc
+ ,pn.qn816w_pnc
+ ,pn.qn817w_pnc
+ ,pn.qn818w_pnc
+ ,pn.qn819w_pnc
+ ,pn.qn820w_pnc
+ ,pn.qn820aw_pnc
+ ,pn.qn821w_pnc
+ ,pn.qn822w_pnc
+ ,pn.qn822aw_pnc
+ ,pn.qn823w_pnc
+ ,pn.qn824w_pnc
+ ,pn.qn824aw_pnc
+ ,pn.qn825w_pnc
+ ,pn.qn826w_pnc
+ ,pn.qn826aw_pnc
+ ,pn.qn827w_pnc
+ ,pn.qn828w_pnc
+ ,pn.qn828aw_pnc
+ ,pn.qn829w_pnc
+ ,pn.qn830w_pnc
+ ,pn.qn830aw_pnc
+ ,pn.qn831w_pnc
+ ,pn.qn832w_pnc
+ ,pn.qn832aw_pnc
+ ,pn.qn833w_pnc
+ ,pn.qn834w_pnc
+ ,pn.qn834aw_pnc
+ ,pn.qn835w_pnc
+ ,pn.qn836w_pnc
+ ,pn.qn836aw_pnc
+ ,pn.qn837w_pnc
+ ,an.qn901w
+ ,an.qn9id
+ ,an.qn903w_anc
+ ,an.qn904w_anc
+ ,an.qn905w_anc
+ ,an.qn906w_anc
+ ,an.qn907w_anc
+ ,an.qn908w_anc
+ ,an.qn909w_anc
+ ,an.qn910w_anc
+ ,an.qn911w_anc
+ ,an.qn912w_anc
  ,ma.qn1001_hhw
  ,ma.qn1002_hhw
  ,ma.qn1003_hhw
@@ -240,9 +248,9 @@ LEFT JOIN diarrhea_u5 dh
   ON (cm.hhid = dh.hhid AND cm.childid = dh.childid)
 LEFT JOIN fortified_u5 fo
   ON (cm.hhid = fo.hhid AND cm.childid = fo.childid)
--- LEFT JOIN postnatal pn
---    ON (cm.hhid = pn.hhid)
--- LEFT JOIN antenatal an
---    ON (cm.hhid = an.hhid)
+LEFT JOIN postnatal pn
+   ON (cm.hhid = pn.hhid)
+LEFT JOIN antenatal an
+   ON (cm.hhid = an.hhid)
 LEFT JOIN roster_adults_edu ra
  ON (cm.hhid = ra.hhid);
