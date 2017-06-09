@@ -36,5 +36,6 @@ We fit Random Forests, Ada- and Gradient-Boosting, SVM. We also extended the Bag
 Not surprisingly at the end Gradient Boosting was the best performer.
 With it we were able to achieve 0.75 AUC ROC score.
 Our recall was 0.82, with a False Positive Rate of 0.43. We weren't so much concerned with the high FPR, because Living Goods is going to still visit all households even if a scoring model will classify them as low risk. What we were focused on was achieving high specifity, and 0.82, compared to the 0.053 baseline without any predictor is very satisfactory to begin with.
+Back to the was not surprisingly: with a very low signal data set, any algorithm that is able to learn slowly and progressively correct prediction errors step-by-step, sounds very much like one that has a better chance at performing well among those tried, as opposed to algorithms that fit very deep decision trees, like random forests.
 
 Future work would imply trying to use an anomaly detection framework to handle the very high unbalance: in the literature there are very interesting references to isolation forests, where many random forest are fitted and the output one's interested in is the average number of branches that are necessary to perfectly isolate any data point. The hope is that minority class instances will have a significantly higher average path length.
