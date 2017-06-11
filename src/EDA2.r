@@ -6,8 +6,10 @@
 
 # Read the data
 #res <- dbSendQuery(con, "SELECT * from significance_test")
-res <- dbSendQuery(con, "SELECT * from survey")
-data <- fetch(res, n = -1)
+#res <- dbSendQuery(con, "SELECT * from survey")
+#data <- fetch(res, n = -1)
+
+data <- read.csv("living_goods_data.csv")
 
 # Cast variables to appropriate type
 data$district_name <- as.factor(as.character(data$district_name))
@@ -242,9 +244,9 @@ data$qn912w_anc <- as.factor(as.character(data$qn912w_anc))
 # 
 # # Variable analysis
 library(dplyr)
-source("/Users/stefanobrunelli//Galvanize/Capstone/src/functions.r")
+source("./src/functions.r")
 
-setwd("/Users/stefanobrunelli/Galvanize/Capstone/images")
+setwd("./images")
 
 # Split categorical and quantitative variables as they'll have 2 different categories
 # of tests
@@ -331,7 +333,6 @@ chosen_variables <- c(chosen_variables, names(quantitative_tests[mask]))
 
 
 library(scales)
-setwd("/Users/stefanobrunelli/Galvanize/Capstone/images")
 ############################################################
 # Plot significant questions at chosen significance level
 ############################################################
